@@ -3,8 +3,6 @@ package com.mystictreegames.pagecurl;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import com.mystictreegames.pagecurl.R;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -12,9 +10,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Rect;
-import android.graphics.Paint.Style;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextPaint;
@@ -28,10 +26,10 @@ import android.view.View;
  * @author Moritz 'Moss' Wundke (b.thax.dcg@gmail.com)
  *
  */
-public class PageCurlView extends View {
+public class SimplePagerView extends View {
 	
 	/** Our Log tag */
-	private final static String TAG = "PageCurlView";
+	private final static String TAG = "SimplePagerView";
 	
 	// Debug text paint stuff
 	private Paint mTextPaint;
@@ -204,7 +202,7 @@ public class PageCurlView extends View {
 	class FlipAnimationHandler extends Handler {
 		@Override
 		public void handleMessage(Message msg) {
-			PageCurlView.this.FlipAnimationStep();
+			SimplePagerView.this.FlipAnimationStep();
 		}
 
 		public void sleep(long millis) {
@@ -217,7 +215,7 @@ public class PageCurlView extends View {
 	 * Base
 	 * @param context
 	 */
-	public PageCurlView(Context context) {
+	public SimplePagerView(Context context) {
 		super(context);
 		init(context);
 		ResetClipEdge();
@@ -228,20 +226,20 @@ public class PageCurlView extends View {
 	 * 
 	 * @see android.view.View#View(android.content.Context, android.util.AttributeSet)
 	 */
-	public PageCurlView(Context context, AttributeSet attrs) {
+	public SimplePagerView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init(context);
 		
 		// Get the data from the XML AttributeSet
 		{
-			TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PageCurlView);
+			TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SimplePagerView);
 	
 			// Get data
-			bEnableDebugMode = a.getBoolean(R.styleable.PageCurlView_enableDebugMode, bEnableDebugMode);
-			mCurlSpeed = a.getInt(R.styleable.PageCurlView_curlSpeed, mCurlSpeed);
-			mUpdateRate = a.getInt(R.styleable.PageCurlView_updateRate, mUpdateRate);
-			mInitialEdgeOffset = a.getInt(R.styleable.PageCurlView_initialEdgeOffset, mInitialEdgeOffset);
-			mCurlMode = a.getInt(R.styleable.PageCurlView_curlMode, mCurlMode);
+			bEnableDebugMode = a.getBoolean(R.styleable.SimplePagerView_enableDebugMode, bEnableDebugMode);
+			mCurlSpeed = a.getInt(R.styleable.SimplePagerView_curlSpeed, mCurlSpeed);
+			mUpdateRate = a.getInt(R.styleable.SimplePagerView_updateRate, mUpdateRate);
+			mInitialEdgeOffset = a.getInt(R.styleable.SimplePagerView_initialEdgeOffset, mInitialEdgeOffset);
+			mCurlMode = a.getInt(R.styleable.SimplePagerView_curlMode, mCurlMode);
 			
 			Log.i(TAG, "mCurlSpeed: " + mCurlSpeed);
 			Log.i(TAG, "mUpdateRate: " + mUpdateRate);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<declare-styleable name="PageCurlView">
+	<declare-styleable name="SimplePagerView">
 		<!-- Enable/Disable debug mode -->
 		<attr name="enableDebugMode" format="boolean" />
 		<!-- Curl speed  the animation moves in px/frame -->
